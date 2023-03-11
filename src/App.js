@@ -1,4 +1,4 @@
-import { PencilSquareIcon } from '@heroicons/react/24/outline';
+import { PencilSquareIcon, DocumentArrowDownIcon } from '@heroicons/react/24/outline';
 
 function ModifyCV() {
   return (
@@ -12,11 +12,14 @@ function ModifyCV() {
 function CVTitle() {
   return (
     <div className="flex justify-between rounded-2xl bg-white px-16 py-6">
-      <div className="flex">
-        <div className="font-bold">Title</div>
-        <PencilSquareIcon className="text-gray-400 h-5 w-5" />
+      <div className="flex cursor-pointer items-center gap-3 hover:bg-opacity-20 hover:bg-gradient-to-t">
+        <div className="text-3xl font-bold">Title</div>
+        <PencilSquareIcon className="h-5 w-5 text-gray-400 stroke-2" />
       </div>
-      <button>Download</button>
+      <button className="flex  gap-2 rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold leading-5 text-white hover:bg-sky-700">
+        Download
+        <DocumentArrowDownIcon className="h-5 w-5 text-white stroke-2" />
+      </button>
     </div>
   );
 }
