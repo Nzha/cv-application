@@ -14,6 +14,7 @@ function FullNameForm({ setUser, setUserIdentified }) {
       onSubmit={(e) => {
         e.preventDefault();
         setUserIdentified(true);
+        handleClick();
       }}
     >
       <label className="text-2xl font-bold">Full name</label>
@@ -21,15 +22,14 @@ function FullNameForm({ setUser, setUserIdentified }) {
         className="text-gray-70 appearance-none rounded-lg bg-gray-100 py-3 px-4 focus:outline-none"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        placeholder="Enter your first and last name"
+        autoFocus
       />
       <div className="flex justify-center gap-4">
         <button className="rounded-full border-4 border-gray-200 px-6 py-2 font-semibold hover:bg-gray-200">
           Skip
         </button>
-        <button
-          className="rounded-full bg-gradient-to-r from-purple-500 to-rose-500 px-14 py-2 font-semibold text-white hover:from-sky-500 hover:to-teal-500"
-          onClick={handleClick}
-        >
+        <button className="rounded-full bg-gradient-to-r from-purple-500 to-rose-500 px-14 py-2 font-semibold text-white hover:from-sky-500 hover:to-teal-500">
           Save
         </button>
       </div>

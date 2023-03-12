@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import CVTitle from './Title';
+import CVTitle from './CVTitle';
 import FullNameForm from './FullNameForm';
 import ContactInfo from './UserContactInfo';
 
-function CVForm({ user, setUser }) {
+function CVEdit({ user, setUser }) {
   const [userIdentified, setUserIdentified] = useState(false);
 
   return (
@@ -18,4 +18,4 @@ function CVForm({ user, setUser }) {
   );
 }
 
-export default CVForm;
+export default CVEdit;
