@@ -1,9 +1,9 @@
-import UserContactInfo from "./UserContactInfo";
+import UserContactInfo from './UserContactInfo';
 
-function CVPreview({ user }) {
+function CVPreview({ user, name }) {
   return (
     <div className="min-h-full bg-white shadow-sm">
-      <UserContactInfo user={user} />
+      <UserContactInfo user={user} name={name} />
     </div>
   );
 }

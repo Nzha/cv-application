@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-function FullNameForm({ setUser, setUserIdentified }) {
-  const [name, setName] = useState('');
-
+function FullNameForm({ setUser, setUserIdentified, name, setName }) {
   function handleClick() {
     setUser({ id: uuidv4(), name: name });
   }
@@ -29,7 +26,7 @@ function FullNameForm({ setUser, setUserIdentified }) {
         <button className="rounded-full border-4 border-gray-200 px-6 py-2 font-semibold hover:bg-gray-200">
           Skip
         </button>
-        <button className="rounded-full bg-gradient-to-r from-purple-500 to-rose-500 px-14 py-2 font-semibold text-white hover:from-sky-500 hover:to-teal-500">
+        <button className="rounded-full bg-gradient-to-r from-sky-500 to-teal-500 px-14 py-2 font-semibold text-white hover:from-sky-500 hover:to-sky-500">
           Save
         </button>
       </div>
