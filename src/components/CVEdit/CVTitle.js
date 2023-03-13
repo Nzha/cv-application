@@ -5,7 +5,7 @@ import {
 
 function CVTitle() {
   return (
-    <div className="flex items-center justify-between rounded-2xl bg-white px-9 xl:px-16 py-6 shadow-sm">
+    <div className="sticky flex items-center justify-between bg-white px-9 py-6 shadow-sm lg:static lg:rounded-2xl xl:px-16 -mx-6 lg:mx-0">
       <div className="flex cursor-pointer items-center gap-3 hover:bg-opacity-20 hover:bg-gradient-to-t hover:opacity-70">
         <div className="text-3xl font-bold">My Resume</div>
         <PencilSquareIcon className="h-5 w-5 stroke-2 text-gray-400" />

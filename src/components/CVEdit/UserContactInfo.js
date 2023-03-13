@@ -7,7 +7,7 @@ import {
 
 function UserContactInfo({ user, avatar, setAvatar }) {
   return (
-    <div className="flex items-center justify-between rounded-2xl bg-white px-16 py-6 shadow-sm">
+    <div className="flex items-center justify-between rounded-2xl bg-white px-9 xl:px-16 py-6 shadow-sm">
       <div>
         <div className="text-xl font-semibold">{user.name}</div>
         <div className="text-lg text-gray-400">Job title</div>
