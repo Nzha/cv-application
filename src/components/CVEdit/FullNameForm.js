@@ -7,7 +7,7 @@ function FullNameForm({ setUser, setUserIdentified, name, setName }) {
 
   return (
     <form
-      className="flex flex-col gap-6 rounded-2xl bg-white px-16 py-6 shadow-sm"
+      className="flex flex-col gap-6 rounded-2xl bg-white px-9 xl:px-16 py-6 shadow-sm"
       onSubmit={(e) => {
         e.preventDefault();
         setUserIdentified(true);
