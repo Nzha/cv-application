@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import CVTitle from './CVTitle';
 import FullNameForm from './FullNameForm';
-import ContactInfo from './UserContactInfo';
+import UserContactInfo from './UserContactInfo';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
-function CVEdit({ user, setUser, name, setName }) {
+function CVEdit({ user, setUser, name, setName, avatar, setAvatar }) {
   const [userIdentified, setUserIdentified] = useState(false);
 
   return (
@@ -12,7 +12,7 @@ function CVEdit({ user, setUser, name, setName }) {
       <CVTitle />
       {userIdentified ? (
         <>
-          <ContactInfo user={user} />
+          <UserContactInfo user={user} avatar={avatar} setAvatar={setAvatar} />
           <AddContentBtn />
         </>
       ) : (

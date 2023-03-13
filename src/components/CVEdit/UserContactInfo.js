@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   PencilSquareIcon,
   EnvelopeIcon,
@@ -6,7 +5,7 @@ import {
   MapPinIcon,
 } from '@heroicons/react/24/outline';
 
-function UserContactInfo({ user }) {
+function UserContactInfo({ user, avatar, setAvatar }) {
   return (
     <div className="flex items-center justify-between rounded-2xl bg-white px-16 py-6 shadow-sm">
       <div>
@@ -29,14 +28,12 @@ function UserContactInfo({ user }) {
           </div>
         </div>
       </div>
-      <Avatar />
+      <Avatar avatar={avatar} setAvatar={setAvatar} />
     </div>
   );
 }
 
-function Avatar() {
-  const [avatar, setAvatar] = useState();
-
+function Avatar({ avatar, setAvatar }) {
   function handleClick(e) {
     setAvatar(URL.createObjectURL(e.target.files[0]));
   }
