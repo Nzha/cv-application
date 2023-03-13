@@ -7,12 +7,6 @@ import {
 } from '@heroicons/react/24/outline';
 
 function UserContactInfo({ user }) {
-  const [avatar, setAvatar] = useState();
-
-  function handleClick(e) {
-    setAvatar(URL.createObjectURL(e.target.files[0]))
-  }
-
   return (
     <div className="flex items-center justify-between rounded-2xl bg-white px-16 py-6 shadow-sm">
       <div>
@@ -35,19 +29,41 @@ function UserContactInfo({ user }) {
           </div>
         </div>
       </div>
-      <div className="relative">
-        <img
-          src={avatar ? avatar : 'https://tecdn.b-cdn.net/img/new/avatars/5.webp'}
-          className="w-32 h-32 rounded-full shadow-lg"
-          alt="Avatar"
-        />
-        <label htmlFor="uploadAvatar" className="absolute right-1 bottom-0 rounded-full bg-gradient-to-r from-sky-500 to-teal-500 p-2 hover:from-sky-500 hover:to-sky-500 cursor-pointer">
-          <PencilSquareIcon className="h-5 w-5 stroke-2 text-white" />
-        </label>
-        <input type="file" id="uploadAvatar" className="hidden" onChange={handleClick} />
-      </div>
+      <Avatar />
     </div>
   );
+}
+
+function Avatar() {
+  const [avatar, setAvatar] = useState();
+
+  function handleClick(e) {
+    setAvatar(URL.createObjectURL(e.target.files[0]));
+  }
+  
+  return (
+    <div className="relative">
+    <img
+      src={
+        avatar ? avatar : 'https://tecdn.b-cdn.net/img/new/avatars/5.webp'
+      }
+      className="h-32 w-32 rounded-full shadow-lg"
+      alt="Avatar"
+    />
+    <label
+      htmlFor="uploadAvatar"
+      className="absolute right-1 bottom-0 cursor-pointer rounded-full bg-gradient-to-r from-sky-500 to-teal-500 p-2 hover:from-sky-500 hover:to-sky-500"
+    >
+      <PencilSquareIcon className="h-5 w-5 stroke-2 text-white" />
+    </label>
+    <input
+      type="file"
+      id="uploadAvatar"
+      className="hidden"
+      onChange={handleClick}
+    />
+  </div>
+  )
 }
 
 export default UserContactInfo;
