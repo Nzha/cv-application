@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import CancelSaveBtns from './CancelSaveBtns';
 
 function FullNameForm({ setUser, setUserIdentified, name, setName }) {
   function handleClick() {
@@ -22,14 +23,7 @@ function FullNameForm({ setUser, setUserIdentified, name, setName }) {
         placeholder="Enter your first and last name"
         autoFocus
       />
-      <div className="flex justify-center gap-4">
-        <button className="rounded-full border-4 border-gray-200 px-6 py-2 font-semibold hover:bg-gray-200">
-          Skip
-        </button>
-        <button className="rounded-full bg-gradient-to-r from-sky-500 to-teal-500 px-14 py-2 font-semibold text-white hover:from-sky-500 hover:to-sky-500">
-          Save
-        </button>
-      </div>
+      <CancelSaveBtns cancel='Skip' />
     </form>
   );
 }

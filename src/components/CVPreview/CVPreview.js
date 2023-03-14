@@ -1,4 +1,4 @@
-import UserContactInfo from './UserContactInfo';
+import UserContactInfo from './PersonalInfo';
 
 function CVPreview({ user, name, avatar }) {
   return (

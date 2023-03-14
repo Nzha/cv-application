@@ -1,19 +1,37 @@
 import { useState } from 'react';
 import CVTitle from './CVTitle';
 import FullNameForm from './FullNameForm';
-import UserContactInfo from './UserContactInfo';
+import PersonalInfo, { PersonalInfoForm } from './PersonalInfo';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, name, setName, avatar, setAvatar }) {
   const [userIdentified, setUserIdentified] = useState(false);
+  const [persoInfoForm, setPersoInfoForm] = useState(false);
 
   return (
     <div className="flex flex-col gap-6">
       <CVTitle />
       {userIdentified ? (
         <>
-          <UserContactInfo user={user} avatar={avatar} setAvatar={setAvatar} />
-          <AddContentBtn />
+          {persoInfoForm ? (
+            <PersonalInfoForm
+              user={user}
+              setUser={setUser}
+              avatar={avatar}
+              setAvatar={setAvatar}
+            />
+          ) : (
+            <>
+              <PersonalInfo
+                user={user}
+                setUser={setUser}
+                avatar={avatar}
+                setAvatar={setAvatar}
+                setPersoInfoForm={setPersoInfoForm}
+              />
+              <AddContentBtn />
+            </>
+          )}
         </>
       ) : (
         <FullNameForm
