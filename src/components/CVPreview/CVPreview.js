@@ -2,7 +2,7 @@ import UserContactInfo from './PersonalInfo';
 
 function CVPreview({ user, avatar }) {
   return (
-    <div className="min-h-full bg-white shadow-sm hidden lg:block">
+    <div className="hidden min-h-full bg-white py-14 px-14 shadow-sm lg:block">
       <UserContactInfo user={user} avatar={avatar} />
     </div>
   );

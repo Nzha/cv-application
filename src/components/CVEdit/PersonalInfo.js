@@ -1,33 +1,40 @@
-import CancelSaveBtns from './CancelSaveBtns';
 import {
   PencilSquareIcon,
   EnvelopeIcon,
-  DevicePhoneMobileIcon,
+  PhoneIcon,
   MapPinIcon,
 } from '@heroicons/react/24/outline';
 
 function PersonalInfo({ user, avatar, setAvatar, setPersoInfoForm }) {
   return (
     <div
-      className="flex cursor-pointer items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm xl:px-16"
+      className="flex cursor-pointer items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm"
       onClick={() => setPersoInfoForm(true)}
     >
       <div>
         <div className="text-xl font-semibold">{user.name}</div>
-        <div className="text-lg text-gray-400">Job title</div>
+        <div className="text-lg text-gray-400">
+          {user.jobTitle ? user.jobTitle : 'Job title'}
+        </div>
         <div className="flex justify-between">
           <div className="mt-3 flex flex-col gap-2">
             <div className="flex gap-2">
               <EnvelopeIcon className="h-5 w-5 text-gray-400" />
-              <div className=" text-gray-400">Email</div>
+              <div className=" text-gray-400">
+                {user.email ? user.email : 'Email'}
+              </div>
             </div>
             <div className="flex gap-2">
-              <DevicePhoneMobileIcon className="h-5 w-5 text-gray-400" />
-              <div className=" text-gray-400">Phone</div>
+              <PhoneIcon className="h-5 w-5 text-gray-400" />
+              <div className=" text-gray-400">
+                {user.phone ? user.phone : 'Phone'}
+              </div>
             </div>
             <div className="flex gap-2">
               <MapPinIcon className="h-5 w-5 text-gray-400" />
-              <div className=" text-gray-400">Address</div>
+              <div className=" text-gray-400">
+                {user.address ? user.address : 'Address'}
+              </div>
             </div>
           </div>
         </div>
@@ -65,35 +72,4 @@ function Avatar({ avatar, setAvatar }) {
   );
 }
 
-function PersonalInfoForm({ user, setUser }) {
-  function handleNameChange(e) {
-    setUser({
-      ...user,
-      name: e.target.value
-    });
-  }
-
-  return (
-    <div className="cursor-pointer items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm xl:px-16">
-      <div className="text-xl font-semibold">Edit personal details</div>
-      <form>
-        <label
-          className="mb-2 mt-6 block text-sm font-bold text-gray-700"
-          htmlFor="full-name"
-        >
-          Full name
-        </label>
-        <input
-          className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
-          id="full-name"
-          type="text"
-          value={user.name}
-          onChange={handleNameChange}
-        />
-        <CancelSaveBtns />
-      </form>
-    </div>
-  );
-}
-
-export { PersonalInfo as default, PersonalInfoForm };
+export default PersonalInfo;

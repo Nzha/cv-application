@@ -1,17 +1,18 @@
 import { useState } from 'react';
 import CVTitle from './CVTitle';
 import FullNameForm from './FullNameForm';
-import PersonalInfo, { PersonalInfoForm } from './PersonalInfo';
+import PersonalInfo from './PersonalInfo';
+import PersonalInfoForm from './PersonalInfoForm';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, avatar, setAvatar }) {
-  const [userIdentified, setUserIdentified] = useState(false);
+  const [mainPage, setMainPage] = useState(false);
   const [persoInfoForm, setPersoInfoForm] = useState(false);
 
   return (
     <div className="flex flex-col gap-6">
       <CVTitle />
-      {userIdentified ? (
+      {mainPage ? (
         <>
           {persoInfoForm ? (
             <PersonalInfoForm
@@ -19,12 +20,12 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
               setUser={setUser}
               avatar={avatar}
               setAvatar={setAvatar}
+              setPersoInfoForm={setPersoInfoForm}
             />
           ) : (
             <>
               <PersonalInfo
                 user={user}
-                setUser={setUser}
                 avatar={avatar}
                 setAvatar={setAvatar}
                 setPersoInfoForm={setPersoInfoForm}
@@ -34,11 +35,7 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
           )}
         </>
       ) : (
-        <FullNameForm
-          user={user}
-          setUser={setUser}
-          setUserIdentified={setUserIdentified}
-        />
+        <FullNameForm user={user} setUser={setUser} setMainPage={setMainPage} />
       )}
     </div>
   );
