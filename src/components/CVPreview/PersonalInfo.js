@@ -1,7 +1,7 @@
-function UserContactInfo({ name, avatar }) {
+function UserContactInfo({ user, avatar }) {
   return (
     <div className="relative">
-      <div className="pt-14 text-center text-2xl font-semibold">{name}</div>
+      <div className="pt-14 text-center text-2xl font-semibold">{user.name}</div>
       {avatar && (
         <img
           src={avatar}

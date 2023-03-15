@@ -4,7 +4,7 @@ import FullNameForm from './FullNameForm';
 import PersonalInfo, { PersonalInfoForm } from './PersonalInfo';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
-function CVEdit({ user, setUser, name, setName, avatar, setAvatar }) {
+function CVEdit({ user, setUser, avatar, setAvatar }) {
   const [userIdentified, setUserIdentified] = useState(false);
   const [persoInfoForm, setPersoInfoForm] = useState(false);
 
@@ -35,10 +35,9 @@ function CVEdit({ user, setUser, name, setName, avatar, setAvatar }) {
         </>
       ) : (
         <FullNameForm
+          user={user}
           setUser={setUser}
           setUserIdentified={setUserIdentified}
-          name={name}
-          setName={setName}
         />
       )}
     </div>

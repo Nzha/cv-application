@@ -1,9 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 import CancelSaveBtns from './CancelSaveBtns';
 
-function FullNameForm({ setUser, setUserIdentified, name, setName }) {
+function FullNameForm({ user, setUser, setUserIdentified }) {
   function handleClick() {
-    setUser({ id: uuidv4(), name: name });
+    setUser({
+      ...user,
+      id: uuidv4()
+    });
   }
 
   return (
@@ -18,8 +21,8 @@ function FullNameForm({ setUser, setUserIdentified, name, setName }) {
       <label className="text-2xl font-bold">Full name</label>
       <input
         className="text-gray-70 appearance-none rounded-lg bg-gray-100 py-3 px-4 focus:outline-none"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={user.name}
+        onChange={(e) => setUser({name: e.target.value})}
         placeholder="Enter your first and last name"
         autoFocus
       />

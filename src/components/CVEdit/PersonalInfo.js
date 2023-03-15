@@ -65,7 +65,14 @@ function Avatar({ avatar, setAvatar }) {
   );
 }
 
-function PersonalInfoForm({ user }) {
+function PersonalInfoForm({ user, setUser }) {
+  function handleNameChange(e) {
+    setUser({
+      ...user,
+      name: e.target.value
+    });
+  }
+
   return (
     <div className="cursor-pointer items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm xl:px-16">
       <div className="text-xl font-semibold">Edit personal details</div>
@@ -81,13 +88,7 @@ function PersonalInfoForm({ user }) {
           id="full-name"
           type="text"
           value={user.name}
-        />
-        <input
-          className="appearance-none text-lg text-gray-500 outline-none"
-          // onChange={(e) => {
-          //   setJob(e.target.value);
-          //   setUser({ ...user, jobTitle: job });
-          // }}
+          onChange={handleNameChange}
         />
         <CancelSaveBtns />
       </form>
