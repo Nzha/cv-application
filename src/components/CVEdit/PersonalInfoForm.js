@@ -2,7 +2,7 @@ import { useState } from 'react';
 import CancelSaveBtns from './CancelSaveBtns';
 
 function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
-  const [initialUser, setInitialUser] = useState(user);
+  const [initialUser] = useState(user);
 
   function handleChange(e) {
     setUser({
@@ -20,7 +20,7 @@ function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
   return (
     <div className="cursor-pointer rounded-2xl bg-white py-6 px-9 shadow-sm">
       <div className="text-xl font-semibold">Edit personal details</div>
-      <form
+      <form className=''
         onSubmit={(e) => {
           e.preventDefault();
           setPersoInfoForm(false);
@@ -54,8 +54,8 @@ function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
           value={user.jobTitle}
           onChange={handleChange}
         />
-        <div className="flex gap-5">
-          <div>
+        <div className="flex gap-5 w-full">
+          <div className='w-1/2'>
             <label
               className="mb-2 mt-6 block text-sm font-bold text-gray-700"
               htmlFor="email"
@@ -64,14 +64,14 @@ function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
             </label>
             <input
               name="email"
-              className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
+              className="w-full block appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
               id="email"
-              type="text"
+              type="email"
               value={user.email}
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className='w-1/2'>
             <label
               className="mb-2 mt-6 block text-sm font-bold text-gray-700"
               htmlFor="phone"
@@ -80,9 +80,9 @@ function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
             </label>
             <input
               name="phone"
-              className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
+              className="w-full block appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
               id="phone"
-              type="text"
+              type="tel"
               value={user.phone}
               onChange={handleChange}
             />

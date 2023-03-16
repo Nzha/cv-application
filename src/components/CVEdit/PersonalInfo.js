@@ -13,28 +13,49 @@ function PersonalInfo({ user, avatar, setAvatar, setPersoInfoForm }) {
     >
       <div>
         <div className="text-xl font-semibold">{user.name}</div>
-        <div className="text-lg text-gray-400">
-          {user.jobTitle ? user.jobTitle : 'Job title'}
-        </div>
+        {user.jobTitle && (
+          <div className="text-lg text-gray-400">{user.jobTitle}</div>
+        )}
         <div className="flex justify-between">
           <div className="mt-3 flex flex-col gap-2">
             <div className="flex gap-2">
-              <EnvelopeIcon className="h-5 w-5 text-gray-400" />
-              <div className=" text-gray-400">
-                {user.email ? user.email : 'Email'}
-              </div>
+              {user.email ? (
+                <>
+                  <EnvelopeIcon className="h-5 w-5" />
+                  <div>{user.email}</div>
+                </>
+              ) : (
+                <>
+                  <EnvelopeIcon className="h-5 w-5 text-gray-400" />
+                  <div className="text-gray-400">Email</div>
+                </>
+              )}
             </div>
             <div className="flex gap-2">
-              <PhoneIcon className="h-5 w-5 text-gray-400" />
-              <div className=" text-gray-400">
-                {user.phone ? user.phone : 'Phone'}
-              </div>
+              {user.phone ? (
+                <>
+                  <PhoneIcon className="h-5 w-5" />
+                  <div>{user.phone}</div>
+                </>
+              ) : (
+                <>
+                  <PhoneIcon className="h-5 w-5 text-gray-400" />
+                  <div className="text-gray-400">Phone</div>
+                </>
+              )}
             </div>
             <div className="flex gap-2">
-              <MapPinIcon className="h-5 w-5 text-gray-400" />
-              <div className=" text-gray-400">
-                {user.address ? user.address : 'Address'}
-              </div>
+              {user.address ? (
+                <>
+                  <MapPinIcon className="h-5 w-5" />
+                  <div>{user.address}</div>
+                </>
+              ) : (
+                <>
+                  <MapPinIcon className="h-5 w-5 text-gray-400" />
+                  <div className="text-gray-400">Address</div>
+                </>
+              )}
             </div>
           </div>
         </div>
