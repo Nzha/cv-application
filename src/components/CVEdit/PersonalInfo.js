@@ -7,12 +7,12 @@ import {
 
 function PersonalInfo({ user, avatar, setAvatar, setPersoInfoForm }) {
   return (
-    <div
-      className="flex cursor-pointer items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm"
-      onClick={() => setPersoInfoForm(true)}
-    >
-      <div>
-        <div className="text-xl font-semibold">{user.name}</div>
+    <div className="flex items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm">
+      <div className="cursor-pointer" onClick={() => setPersoInfoForm(true)}>
+        <div className="flex gap-3">
+          <div className="text-xl font-semibold">{user.name}</div>
+          <PencilSquareIcon className="h-5 w-5 self-center stroke-2 text-gray-400" />
+        </div>
         {user.jobTitle && (
           <div className="text-lg text-gray-400">{user.jobTitle}</div>
         )}

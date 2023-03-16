@@ -25,8 +25,11 @@ function FullNameForm({ user, setUser, setMainPage }) {
         onChange={(e) => setUser({ name: e.target.value })}
         placeholder="Enter your first and last name"
         autoFocus
+        required
       />
-      <CancelSaveBtns cancel="Skip" />
+      <button className="self-center rounded-full bg-gradient-to-r from-sky-500 to-teal-500 px-14 py-3 font-semibold text-white hover:from-sky-500 hover:to-sky-500">
+        Save
+      </button>
     </form>
   );
 }

@@ -6,15 +6,15 @@ import {
 
 function UserContactInfo({ user, avatar }) {
   return (
-    <div className="relative flex flex-col items-center gap-2">
-      <div className="text-2xl font-semibold">{user.name}</div>
+    <div className="flex flex-col items-center gap-2">
       {avatar && (
         <img
           src={avatar}
           alt="avatar"
-          className="absolute top-7 left-14 h-32 w-32 rounded-full shadow-lg"
+          className=" -top-7 left-0 h-32 w-32 rounded-full shadow-lg"
         />
       )}
+      <div className="text-2xl font-semibold">{user.name}</div>
       {user.jobTitle && <div>{user.jobTitle}</div>}
       <div className="flex justify-center gap-4 text-sm">
         {user.email && (
