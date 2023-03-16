@@ -1,11 +1,20 @@
+import { useState } from 'react';
 import CancelSaveBtns from './CancelSaveBtns';
 
 function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
+  const [initialUser, setInitialUser] = useState(user);
+
   function handleChange(e) {
     setUser({
       ...user,
       [e.target.name]: e.target.value, // e.target.name refers to the name property given to the <input> DOM element
     });
+  }
+
+  function handleCancel(e) {
+    e.preventDefault();
+    setUser(initialUser);
+    setPersoInfoForm(false);
   }
 
   return (
@@ -93,7 +102,7 @@ function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
           value={user.address}
           onChange={handleChange}
         />
-        <CancelSaveBtns />
+        <CancelSaveBtns handleCancel={handleCancel} />
       </form>
     </div>
   );
