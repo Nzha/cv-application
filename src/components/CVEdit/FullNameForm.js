@@ -1,7 +1,13 @@
 import { v4 as uuidv4 } from 'uuid';
-import CancelSaveBtns from './CancelSaveBtns';
 
 function FullNameForm({ user, setUser, setMainPage }) {
+  function handleChange(e) {
+    setUser({
+      ...user,
+      name: e.target.value,
+    });
+  }
+
   function handleClick() {
     setUser({
       ...user,
@@ -21,8 +27,8 @@ function FullNameForm({ user, setUser, setMainPage }) {
       <label className="text-2xl font-bold">Full name</label>
       <input
         className="text-gray-70 appearance-none rounded-lg bg-gray-100 py-3 px-4 focus:outline-none"
-        value={user.name}
-        onChange={(e) => setUser({ name: e.target.value })}
+        value={user.name || ''}
+        onChange={handleChange}
         placeholder="Enter your first and last name"
         autoFocus
         required

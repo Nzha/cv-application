@@ -11,7 +11,7 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
 
   return (
     <div className="flex flex-col gap-6">
-      <CVTitle />
+      <CVTitle user={user} setUser={setUser} />
       {mainPage ? (
         <>
           {persoInfoForm ? (

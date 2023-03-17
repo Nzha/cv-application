@@ -15,7 +15,7 @@ function UserContactInfo({ user, avatar }) {
         />
       )}
       <div className="text-2xl font-semibold">{user.name}</div>
-      {user.jobTitle && <div>{user.jobTitle}</div>}
+      {user.jobTitle && <div className="text-xl">{user.jobTitle}</div>}
       <div className="flex justify-center gap-4 text-sm">
         {user.email && (
           <div className="flex gap-1">

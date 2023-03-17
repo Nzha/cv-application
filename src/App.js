@@ -3,7 +3,7 @@ import CVEdit from './components/CVEdit/CVEdit';
 import CVPreview from './components/CVPreview/CVPreview';
 
 function App() {
-  const [user, setUser] = useState({name: ''});
+  const [user, setUser] = useState({ cvTitle: 'My Resume' });
   const [avatar, setAvatar] = useState();
 
   const childProps = {
