@@ -7,6 +7,21 @@ import {
 
 function CVTitle({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
+  const inputRef = useRef(null);
+
+  // Close input element when user clicks outside it
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setEditMode(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [inputRef]);
 
   return (
     <div className="sticky -mx-6 flex max-h-20 items-center justify-between bg-white px-9 py-6 shadow-sm lg:static lg:mx-0 lg:rounded-2xl">
@@ -21,6 +36,7 @@ function CVTitle({ user, setUser }) {
           <input
             className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 text-xl font-bold leading-tight focus:outline-none"
             value={user.cvTitle}
+            ref={inputRef}
             onChange={(e) => {
               setUser({
                 ...user,
@@ -30,8 +46,8 @@ function CVTitle({ user, setUser }) {
             autoFocus
             required
           />
-          <button className="rounded-full bg-gradient-to-r from-sky-500 to-teal-500 p-1 leading-5 text-white hover:bg-sky-700">
-            <CheckIcon className="h-5 w-5 stroke-2 text-whit" />
+          <button className="rounded-full bg-gradient-to-r from-sky-500 to-teal-500 p-1 leading-5 text-white hover:from-sky-500 hover:to-sky-500">
+            <CheckIcon className="h-5 w-5 stroke-2 text-white" />
           </button>
         </form>
       ) : (
