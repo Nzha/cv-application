@@ -6,7 +6,7 @@ import PersonalInfoForm from './PersonalInfoForm';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, avatar, setAvatar }) {
-  const [mainPage, setMainPage] = useState(false);
+  const [mainPage, setMainPage] = useState(user.name ? true : false)
   const [persoInfoForm, setPersoInfoForm] = useState(false);
 
   return (

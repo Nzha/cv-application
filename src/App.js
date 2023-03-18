@@ -1,10 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CVEdit from './components/CVEdit/CVEdit';
 import CVPreview from './components/CVPreview/CVPreview';
 
 function App() {
-  const [user, setUser] = useState({ cvTitle: 'My Resume' });
+  const [user, setUser] = useState(() => {
+    const storedUser = JSON.parse(localStorage.getItem('cv-builder'));
+    return storedUser || { cvTitle: 'My Resume' };
+  });
   const [avatar, setAvatar] = useState();
+
+  // Save user in local storage every time a change in user occurs
+  useEffect(() => {
+    localStorage.setItem('cv-builder', JSON.stringify(user));
+  }, [user]);
 
   const childProps = {
     user,

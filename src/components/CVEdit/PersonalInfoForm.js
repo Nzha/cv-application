@@ -40,6 +40,7 @@ function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
           type="text"
           value={user.name || ''}
           onChange={handleChange}
+          required
         />
         <label
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
