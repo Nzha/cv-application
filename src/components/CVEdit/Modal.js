@@ -1,12 +1,31 @@
+import { useRef, useEffect } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 function Modal({ showModal, setShowModal }) {
+  const modalRef = useRef(null);
+
+  // Close element when user clicks outside it
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setShowModal(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [setShowModal]);
+
   return (
     showModal && (
       <>
         <div className="fixed inset-0 z-50 m-2 flex items-center justify-center overflow-y-auto overflow-x-hidden outline-none focus:outline-none">
           <div className="relative my-6 mx-auto w-auto max-w-3xl">
-            <div className="relative flex w-full flex-col rounded-2xl border-0 bg-white px-6 py-6 shadow-lg outline-none focus:outline-none sm:px-9">
+            <div
+              className="relative flex w-full flex-col rounded-2xl border-0 bg-white px-6 py-6 shadow-lg outline-none focus:outline-none sm:px-9"
+              ref={modalRef}
+            >
               {/*header*/}
               <div className="flex items-center justify-between pb-6">
                 <h3 className="text-3xl font-semibold">Add content</h3>
