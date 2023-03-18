@@ -26,7 +26,9 @@ function CVTitle({ user, setUser }) {
 
   async function createPDF() {
     const pdf = new jsPDF();
-    const data = await html2canvas(document.querySelector('#pdf'));
+    const data = await html2canvas(document.querySelector('#pdf'), {
+      scale: 1.5, // The greater the scale, the better the quality but also the size
+    });
     const img = data.toDataURL('image/png');
     const pdfWidth = pdf.internal.pageSize.getWidth();
     const pdfHeight = pdf.internal.pageSize.getHeight();
