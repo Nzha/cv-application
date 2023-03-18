@@ -4,6 +4,8 @@ import {
   DocumentArrowDownIcon,
   CheckIcon,
 } from '@heroicons/react/24/outline';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 function CVTitle({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
@@ -16,12 +18,21 @@ function CVTitle({ user, setUser }) {
         setEditMode(false);
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [inputRef]);
+
+  async function createPDF() {
+    const pdf = new jsPDF();
+    const data = await html2canvas(document.querySelector('#pdf'));
+    const img = data.toDataURL('image/png');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    pdf.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('resume.pdf');
+  }
 
   return (
     <div className="sticky -mx-6 flex max-h-20 items-center justify-between bg-white px-9 py-6 shadow-sm lg:static lg:mx-0 lg:rounded-2xl">
@@ -59,7 +70,10 @@ function CVTitle({ user, setUser }) {
           <PencilSquareIcon className="h-5 w-5 stroke-2 text-gray-400" />
         </div>
       )}
-      <button className="flex  gap-2 rounded-full bg-sky-500 p-3 text-sm font-semibold leading-5 text-white hover:bg-sky-700 sm:px-5 sm:py-2">
+      <button
+        className="flex gap-2 rounded-full bg-sky-500 p-3 text-sm font-semibold leading-5 text-white hover:bg-sky-700 sm:px-5 sm:py-2"
+        onClick={createPDF}
+      >
         <div className="hidden sm:block">Download</div>
         <DocumentArrowDownIcon className="h-5 w-5 stroke-2 text-white" />
       </button>

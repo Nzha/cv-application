@@ -14,7 +14,7 @@ function PersonalInfo({ user, avatar, setAvatar, setPersoInfoForm }) {
           <PencilSquareIcon className="h-5 w-5 self-center stroke-2 text-gray-400" />
         </div>
         {user.jobTitle && (
-          <div className="text-lg text-gray-400">{user.jobTitle}</div>
+          <div className="text-lg text-gray-500">{user.jobTitle}</div>
         )}
         <div className="flex justify-between">
           <div className="mt-3 flex flex-col gap-2">
