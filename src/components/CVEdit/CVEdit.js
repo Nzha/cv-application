@@ -4,26 +4,22 @@ import FullNameForm from './FullNameForm';
 import PersonalInfo from './PersonalInfo';
 import PersonalInfoForm from './PersonalInfoForm';
 import Modal from './Modal';
+import ProExpForm from './ProExpForm';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, avatar, setAvatar }) {
   const [mainPage, setMainPage] = useState(user.name ? true : false);
   const [persoInfoForm, setPersoInfoForm] = useState(false);
+  const [proExpForm, setProExpForm] = useState(false);
 
   return (
     <div className="flex flex-col gap-6">
       <CVTitle user={user} setUser={setUser} />
-      {mainPage ? (
+      {!mainPage ? (
+        <FullNameForm user={user} setUser={setUser} setMainPage={setMainPage} />
+      ) : (
         <>
-          {persoInfoForm ? (
-            <PersonalInfoForm
-              user={user}
-              setUser={setUser}
-              avatar={avatar}
-              setAvatar={setAvatar}
-              setPersoInfoForm={setPersoInfoForm}
-            />
-          ) : (
+          {!persoInfoForm && !proExpForm ? (
             <>
               <PersonalInfo
                 user={user}
@@ -31,18 +27,34 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
                 setAvatar={setAvatar}
                 setPersoInfoForm={setPersoInfoForm}
               />
-              <AddContentBtn />
+              <AddContentBtn setProExpForm={setProExpForm} />
+            </>
+          ) : (
+            <>
+              {persoInfoForm ? (
+                <PersonalInfoForm
+                  user={user}
+                  setUser={setUser}
+                  avatar={avatar}
+                  setAvatar={setAvatar}
+                  setPersoInfoForm={setPersoInfoForm}
+                />
+              ) : (
+                <ProExpForm
+                  user={user}
+                  setUser={setUser}
+                  setProExpForm={setProExpForm}
+                />
+              )}
             </>
           )}
         </>
-      ) : (
-        <FullNameForm user={user} setUser={setUser} setMainPage={setMainPage} />
       )}
     </div>
   );
 }
 
-function AddContentBtn() {
+function AddContentBtn({ setProExpForm }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -54,7 +66,11 @@ function AddContentBtn() {
         <PlusIcon className="h-6 w-6 stroke-2 text-white" />
         Add content
       </button>
-      <Modal showModal={showModal} setShowModal={setShowModal} />
+      <Modal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setProExpForm={setProExpForm}
+      />
     </div>
   );
 }

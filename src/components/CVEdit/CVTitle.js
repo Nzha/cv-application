@@ -24,16 +24,20 @@ function CVTitle({ user, setUser }) {
     };
   }, [inputRef]);
 
-  async function createPDF() {
-    const pdf = new jsPDF();
-    const data = await html2canvas(document.querySelector('#pdf'), {
-      scale: 1.5, // The greater the scale, the better the quality but also the size
-    });
-    const img = data.toDataURL('image/png');
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight();
-    pdf.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('resume.pdf');
+  // async function createPDF() {
+  //   const pdf = new jsPDF();
+  //   const data = await html2canvas(document.querySelector('#pdf'), {
+  //     scale: 1.5, // The greater the scale, the better the quality but also the size
+  //   });
+  //   const img = data.toDataURL('image/png');
+  //   const pdfWidth = pdf.internal.pageSize.getWidth();
+  //   const pdfHeight = pdf.internal.pageSize.getHeight();
+  //   pdf.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight);
+  //   pdf.save('resume.pdf');
+  // }
+
+  function createPDF() {
+    console.log(user)
   }
 
   return (

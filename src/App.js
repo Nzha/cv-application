@@ -5,7 +5,7 @@ import CVPreview from './components/CVPreview/CVPreview';
 function App() {
   const [user, setUser] = useState(() => {
     const storedUser = JSON.parse(localStorage.getItem('cv-builder'));
-    return storedUser || { cvTitle: 'My Resume' };
+    return storedUser || { cvTitle: 'My Resume', proExp: [] };
   });
   const [avatar, setAvatar] = useState();
 

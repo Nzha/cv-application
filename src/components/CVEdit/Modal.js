@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
-function Modal({ showModal, setShowModal }) {
+function Modal({ showModal, setShowModal, setProExpForm }) {
   const modalRef = useRef(null);
 
   // Close element when user clicks outside it
@@ -38,7 +38,10 @@ function Modal({ showModal, setShowModal }) {
               </div>
               {/*body*/}
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                <div className="cursor-pointer rounded-lg bg-gray-100 px-4 py-5 transition-all hover:scale-[1.02] hover:opacity-90">
+                <div
+                  className="cursor-pointer rounded-lg bg-gray-100 px-4 py-5 transition-all hover:scale-[1.02] hover:opacity-90"
+                  onClick={() => setProExpForm(true)}
+                >
                   <div className="flex gap-2">
                     <div className="font-semibold">Professional Experience</div>
                   </div>
