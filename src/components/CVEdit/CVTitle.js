@@ -47,7 +47,7 @@ function CVTitle({ user, setUser }) {
           }}
         >
           <input
-            className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 text-xl font-bold leading-tight focus:outline-none"
+            className="block w-2/3 appearance-none rounded-xl bg-gray-100 py-3 px-4 text-xl font-bold leading-tight focus:outline-none sm:w-full"
             value={user.cvTitle}
             ref={inputRef}
             onChange={(e) => {
@@ -65,11 +65,13 @@ function CVTitle({ user, setUser }) {
         </form>
       ) : (
         <div
-          className="flex cursor-pointer items-center gap-3 hover:bg-opacity-20 hover:bg-gradient-to-t hover:opacity-70"
+          className="flex w-2/3 cursor-pointer items-center gap-3 hover:bg-opacity-20 hover:bg-gradient-to-t hover:opacity-70"
           onClick={() => setEditMode(true)}
         >
-          <div className="text-3xl font-bold">{user.cvTitle}</div>
-          <PencilSquareIcon className="h-5 w-5 stroke-2 text-gray-400" />
+          <div className="max-w-[16rem] truncate text-3xl font-bold sm:max-w-[35rem]">
+            {user.cvTitle}
+          </div>
+          <PencilSquareIcon className="h-5 w-5 min-w-min stroke-2 text-gray-400" />
         </div>
       )}
       <button
