@@ -14,6 +14,8 @@ function App() {
     localStorage.setItem('cv-builder', JSON.stringify(user));
   }, [user]);
 
+  // localStorage.clear()
+
   const childProps = {
     user,
     setUser,

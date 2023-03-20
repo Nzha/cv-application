@@ -94,18 +94,52 @@ function ProExpForm({ user, setUser, setProExpForm }) {
             />
           </div>
         </div>
+        <div className="flex w-full gap-5">
+          <div className="w-1/2">
+            <label
+              className="mb-2 mt-6 block text-sm font-bold text-gray-700"
+              htmlFor="startDate"
+            >
+              Start date
+            </label>
+            <input
+              name="startDate"
+              className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
+              id="startDate"
+              type="text"
+              value={proExp.startDate || ''}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="w-1/2">
+            <label
+              className="mb-2 mt-6 block text-sm font-bold text-gray-700"
+              htmlFor="EndDate"
+            >
+              End date
+            </label>
+            <input
+              name="EndDate"
+              className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
+              id="EndDate"
+              type="text"
+              value={proExp.EndDate || ''}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
         <label
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
-          htmlFor="address"
+          htmlFor="description"
         >
-          Address
+          Description
         </label>
-        <input
-          name="address"
+        <textarea
+          name="description"
           className="mb-8 block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
-          id="address"
-          type="text"
-          value={proExp.address || ''}
+          id="description"
+          rows="7"
+          value={proExp.description || ''}
           onChange={handleChange}
         />
         <CancelSaveBtns handleCancel={handleCancel} />
