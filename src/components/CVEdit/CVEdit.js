@@ -5,6 +5,7 @@ import PersonalInfo from './PersonalInfo';
 import PersonalInfoForm from './PersonalInfoForm';
 import Modal from './Modal';
 import ProExpForm from './ProExpForm';
+import ProExpList from './ProExpList';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, avatar, setAvatar }) {
@@ -27,6 +28,7 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
                 setAvatar={setAvatar}
                 setPersoInfoForm={setPersoInfoForm}
               />
+              {user.proExp.length > 0 && <ProExpList user={user} />}
               <AddContentBtn setProExpForm={setProExpForm} />
             </>
           ) : (

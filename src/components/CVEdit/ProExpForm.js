@@ -114,16 +114,16 @@ function ProExpForm({ user, setUser, setProExpForm }) {
           <div className="w-1/2">
             <label
               className="mb-2 mt-6 block text-sm font-bold text-gray-700"
-              htmlFor="EndDate"
+              htmlFor="endDate"
             >
               End date
             </label>
             <input
-              name="EndDate"
+              name="endDate"
               className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
-              id="EndDate"
+              id="endDate"
               type="text"
-              value={proExp.EndDate || ''}
+              value={proExp.endDate || ''}
               onChange={handleChange}
             />
           </div>
