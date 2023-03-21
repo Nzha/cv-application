@@ -4,7 +4,7 @@ import {
   MapPinIcon,
 } from '@heroicons/react/24/outline';
 
-function UserContactInfo({ user, avatar }) {
+function PersonalInfo({ user, avatar }) {
   return (
     <div className="flex flex-col items-center gap-2">
       {avatar && (
@@ -40,4 +40,4 @@ function UserContactInfo({ user, avatar }) {
   );
 }
 
-export default UserContactInfo;
+export default PersonalInfo;

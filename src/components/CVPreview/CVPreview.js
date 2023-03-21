@@ -1,4 +1,5 @@
-import UserContactInfo from './PersonalInfo';
+import PersonalInfo from './PersonalInfo';
+import ProExpList from './ProExp';
 
 function CVPreview({ user, avatar }) {
   return (
@@ -6,7 +7,8 @@ function CVPreview({ user, avatar }) {
       className="hidden min-h-full bg-white py-14 px-14 shadow-sm lg:block"
       id="pdf"
     >
-      <UserContactInfo user={user} avatar={avatar} />
+      <PersonalInfo user={user} avatar={avatar} />
+      <ProExpList user={user} />
     </div>
   );
 }

@@ -30,7 +30,7 @@ function ProExp({ proExp, user, setUser }) {
   }
 
   return (
-    <li className="flex items-center justify-between py-2">
+    <li className="flex items-center justify-between py-2" id={proExp.id}>
       <div className="cursor-pointer">
         <div>
           <span className="font-semibold">{proExp.jobTitle}</span>

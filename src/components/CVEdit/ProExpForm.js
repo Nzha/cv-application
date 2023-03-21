@@ -3,25 +3,30 @@ import { v4 as uuidv4 } from 'uuid';
 import CancelSaveBtns from './CancelSaveBtns';
 
 function ProExpForm({ user, setUser, setProExpForm }) {
+  const [initialUser] = useState(user);
   const [proExp, setProExp] = useState([]);
 
   function handleChange(e) {
-    setProExp({
-      ...proExp,
-      [e.target.name]: e.target.value, // e.target.name refers to the name property given to the <input> DOM element
-    });
+    setProExp({ ...proExp, [e.target.name]: e.target.value });
+    const newProExp = [...user.proExp];
+    const index = initialUser.proExp.length;
+    newProExp[index] = {
+      id: uuidv4(),
+      ...newProExp[index],
+      [e.target.name]: e.target.value,
+    };
+    setUser({ ...user, proExp: newProExp });
   }
 
   function handleCancel(e) {
     e.preventDefault();
     setProExp([]);
+    setUser(initialUser);
     setProExpForm(false);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    const newProExp = { id: uuidv4(), ...proExp };
-    setUser({ ...user, proExp: [...user.proExp, newProExp] });
     setProExpForm(false);
   }
 
