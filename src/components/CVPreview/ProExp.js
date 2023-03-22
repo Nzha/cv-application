@@ -2,7 +2,7 @@ function ProExpList({ user }) {
   return (
     <div>
       {user.proExp.map((proExp) => {
-        return <ProExp proExp={proExp} />;
+        return <ProExp key={proExp.id} proExp={proExp} />;
       })}
     </div>
   );

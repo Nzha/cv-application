@@ -7,7 +7,6 @@ function ProExpForm({ user, setUser, setProExpForm }) {
   const [proExp, setProExp] = useState([]);
 
   function handleChange(e) {
-    setProExp({ ...proExp, [e.target.name]: e.target.value });
     const newProExp = [...user.proExp];
     const index = initialUser.proExp.length;
     newProExp[index] = {
@@ -16,6 +15,7 @@ function ProExpForm({ user, setUser, setProExpForm }) {
       [e.target.name]: e.target.value,
     };
     setUser({ ...user, proExp: newProExp });
+    setProExp({ ...proExp, [e.target.name]: e.target.value });
   }
 
   function handleCancel(e) {
@@ -35,7 +35,7 @@ function ProExpForm({ user, setUser, setProExpForm }) {
       <div className="text-xl font-semibold">
         Create Professional Experience
       </div>
-      <form className="" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <label
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
           htmlFor="job-title"

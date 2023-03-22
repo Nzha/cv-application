@@ -39,11 +39,13 @@ function ProExp({ proExp, user, setUser }) {
         </div>
         <div className="text-sm">
           <span>{proExp.startDate}</span>
-          {proExp.startDate && ' - '}
+          {proExp.startDate && proExp.endDate && ' - '}
           <span>{proExp.endDate}</span>
-          {(proExp.city || proExp.country) && ' | '}
+          {(proExp.startDate || proExp.endDate) &&
+            (proExp.city || proExp.country) &&
+            ' | '}
           <span>{proExp.city}</span>
-          {proExp.country && ', '}
+          {proExp.city && proExp.country && ', '}
           <span>{proExp.country}</span>
         </div>
       </div>
