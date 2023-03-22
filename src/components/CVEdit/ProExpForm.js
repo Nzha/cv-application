@@ -2,19 +2,32 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import CancelSaveBtns from './CancelSaveBtns';
 
-function ProExpForm({ user, setUser, setProExpForm }) {
+function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
   const [initialUser] = useState(user);
-  const [proExp, setProExp] = useState([]);
+  const [proExp, setProExp] = useState(
+    proExpForm.editMode
+      ? user.proExp.find((a) => a.id === proExpForm.editId)
+      : []
+  );
 
   function handleChange(e) {
     const newProExp = [...user.proExp];
-    const index = initialUser.proExp.length;
-    newProExp[index] = {
-      id: uuidv4(),
-      ...newProExp[index],
-      [e.target.name]: e.target.value,
-    };
-    setUser({ ...user, proExp: newProExp });
+    if (proExpForm.editMode) {
+      const index = newProExp.findIndex((a) => a.id === proExpForm.editId);
+      newProExp[index] = {
+        ...newProExp[index],
+        [e.target.name]: e.target.value,
+      };
+      setUser({ ...user, proExp: newProExp });
+    } else {
+      const index = initialUser.proExp.length;
+      newProExp[index] = {
+        id: uuidv4(),
+        ...newProExp[index],
+        [e.target.name]: e.target.value,
+      };
+      setUser({ ...user, proExp: newProExp });
+    }
     setProExp({ ...proExp, [e.target.name]: e.target.value });
   }
 

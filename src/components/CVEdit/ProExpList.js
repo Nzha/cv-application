@@ -1,6 +1,6 @@
 import { BriefcaseIcon, TrashIcon } from '@heroicons/react/24/outline';
 
-function ProExpList({ user, setUser }) {
+function ProExpList({ user, setUser, setProExpForm }) {
   return (
     <div className="rounded-2xl bg-white px-9 pt-6 pb-4 shadow-sm">
       <div className="mb-3 flex items-center gap-5">
@@ -15,6 +15,7 @@ function ProExpList({ user, setUser }) {
               proExp={proExp}
               user={user}
               setUser={setUser}
+              setProExpForm={setProExpForm}
             />
           );
         })}
@@ -23,15 +24,19 @@ function ProExpList({ user, setUser }) {
   );
 }
 
-function ProExp({ proExp, user, setUser }) {
-  function handleDeleteProExp(id) {
+function ProExp({ proExp, user, setUser, setProExpForm }) {
+  function handleEdit(id) {
+    setProExpForm({ show: true, editMode: true, editId: id });
+  }
+
+  function handleDelete(id) {
     const newProExp = user.proExp.filter((a) => a.id !== id);
     setUser({ ...user, proExp: newProExp });
   }
 
   return (
     <li className="flex items-center justify-between py-2" id={proExp.id}>
-      <div className="cursor-pointer">
+      <div className="cursor-pointer" onClick={() => handleEdit(proExp.id)}>
         <div>
           <span className="font-semibold">{proExp.jobTitle}</span>
           {proExp.employer && ', '}
@@ -49,7 +54,7 @@ function ProExp({ proExp, user, setUser }) {
           <span>{proExp.country}</span>
         </div>
       </div>
-      <button onClick={() => handleDeleteProExp(proExp.id)}>
+      <button onClick={() => handleDelete(proExp.id)}>
         <TrashIcon className="h-5 w-5 stroke-2" />
       </button>
     </li>

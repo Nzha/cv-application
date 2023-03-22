@@ -29,7 +29,11 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
                 setPersoInfoForm={setPersoInfoForm}
               />
               {user.proExp.length > 0 && (
-                <ProExpList user={user} setUser={setUser} />
+                <ProExpList
+                  user={user}
+                  setUser={setUser}
+                  setProExpForm={setProExpForm}
+                />
               )}
               <AddContentBtn setProExpForm={setProExpForm} />
             </>
@@ -47,6 +51,7 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
                 <ProExpForm
                   user={user}
                   setUser={setUser}
+                  proExpForm={proExpForm}
                   setProExpForm={setProExpForm}
                 />
               )}
