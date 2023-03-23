@@ -1,5 +1,5 @@
 import PersonalInfo from './PersonalInfo';
-import ProExpList from './ProExp';
+import ProExpList from './ProExpList';
 
 function CVPreview({ user, avatar }) {
   return (
