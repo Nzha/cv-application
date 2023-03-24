@@ -4,17 +4,14 @@ import FullNameForm from './FullNameForm';
 import PersonalInfo from './PersonalInfo';
 import PersonalInfoForm from './PersonalInfoForm';
 import Modal from './Modal';
-import ProExpForm from './ProExpForm';
+import ContentForm from './ContentForm';
 import ProExpList from './ProExpList';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, avatar, setAvatar }) {
   const [mainPage, setMainPage] = useState(user.name ? true : false);
   const [persoInfoForm, setPersoInfoForm] = useState(false);
-  const [proExpForm, setProExpForm] = useState({
-    show: false,
-    content: 'proExp',
-  });
+  const [contentForm, setContentForm] = useState(false);
 
   return (
     <div className="flex flex-col gap-6">
@@ -23,7 +20,7 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
         <FullNameForm user={user} setUser={setUser} setMainPage={setMainPage} />
       ) : (
         <>
-          {!persoInfoForm && !proExpForm ? (
+          {!persoInfoForm && !contentForm ? (
             <>
               <PersonalInfo
                 user={user}
@@ -35,10 +32,10 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
                 <ProExpList
                   user={user}
                   setUser={setUser}
-                  setProExpForm={setProExpForm}
+                  setContentForm={setContentForm}
                 />
               )}
-              <AddContentBtn setProExpForm={setProExpForm} />
+              <AddContentBtn setContentForm={setContentForm} />
             </>
           ) : (
             <>
@@ -51,11 +48,11 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
                   setPersoInfoForm={setPersoInfoForm}
                 />
               ) : (
-                <ProExpForm
+                <ContentForm
                   user={user}
                   setUser={setUser}
-                  proExpForm={proExpForm}
-                  setProExpForm={setProExpForm}
+                  contentForm={contentForm}
+                  setContentForm={setContentForm}
                 />
               )}
             </>
@@ -66,7 +63,7 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
   );
 }
 
-function AddContentBtn({ setProExpForm }) {
+function AddContentBtn({ setContentForm }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -81,7 +78,7 @@ function AddContentBtn({ setProExpForm }) {
       <Modal
         showModal={showModal}
         setShowModal={setShowModal}
-        setProExpForm={setProExpForm}
+        setContentForm={setContentForm}
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import { BriefcaseIcon, TrashIcon } from '@heroicons/react/24/outline';
 
-function ProExpList({ user, setUser, setProExpForm }) {
+function ProExpList({ user, setUser, setContentForm }) {
   return (
     <div className="rounded-2xl bg-white px-9 pt-6 pb-4 shadow-sm">
       <div className="mb-3 flex items-center gap-5">
@@ -15,7 +15,7 @@ function ProExpList({ user, setUser, setProExpForm }) {
               proExp={proExp}
               user={user}
               setUser={setUser}
-              setProExpForm={setProExpForm}
+              setContentForm={setContentForm}
             />
           );
         })}
@@ -24,9 +24,9 @@ function ProExpList({ user, setUser, setProExpForm }) {
   );
 }
 
-function ProExp({ proExp, user, setUser, setProExpForm }) {
+function ProExp({ proExp, user, setUser, setContentForm }) {
   function handleEdit(id) {
-    setProExpForm({
+    setContentForm({
       show: true,
       content: 'proExp',
       editMode: true,

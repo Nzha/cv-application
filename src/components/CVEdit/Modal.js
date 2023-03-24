@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
-function Modal({ showModal, setShowModal, setProExpForm }) {
+function Modal({ showModal, setShowModal, setContentForm }) {
   const modalRef = useRef(null);
 
   // Close element when user clicks outside it
@@ -41,7 +41,7 @@ function Modal({ showModal, setShowModal, setProExpForm }) {
                 <div
                   className="cursor-pointer rounded-lg bg-gray-100 px-4 py-5 transition-all hover:scale-[1.02] hover:opacity-90"
                   onClick={() =>
-                    setProExpForm({ show: true, content: 'proExp' })
+                    setContentForm({ show: true, content: 'proExp' })
                   }
                 >
                   <div className="flex gap-2">
@@ -54,7 +54,7 @@ function Modal({ showModal, setShowModal, setProExpForm }) {
                 <div
                   className="cursor-pointer rounded-lg bg-gray-100 px-4 py-5 transition-all hover:scale-[1.02] hover:opacity-90"
                   onClick={() => {
-                    setProExpForm({ show: true, content: 'education' });
+                    setContentForm({ show: true, content: 'education' });
                   }}
                 >
                   <div className="flex gap-2">

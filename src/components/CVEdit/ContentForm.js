@@ -2,18 +2,18 @@ import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import CancelSaveBtns from './CancelSaveBtns';
 
-function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
+function ContentForm({ user, setUser, contentForm, setContentForm }) {
   const [initialUser] = useState(user);
   const [proExp, setProExp] = useState(
-    proExpForm.editMode
-      ? user.proExp.find((a) => a.id === proExpForm.editId)
+    contentForm.editMode
+      ? user.proExp.find((a) => a.id === contentForm.editId)
       : []
   );
 
   function handleChange(e) {
     const newProExp = [...user.proExp];
-    if (proExpForm.editMode) {
-      const index = newProExp.findIndex((a) => a.id === proExpForm.editId);
+    if (contentForm.editMode) {
+      const index = newProExp.findIndex((a) => a.id === contentForm.editId);
       newProExp[index] = {
         ...newProExp[index],
         [e.target.name]: e.target.value,
@@ -35,19 +35,19 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
     e.preventDefault();
     setProExp([]);
     setUser(initialUser);
-    setProExpForm(false);
+    setContentForm(false);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    setProExpForm(false);
+    setContentForm(false);
   }
 
   return (
     <div className="cursor-pointer rounded-2xl bg-white py-6 px-9 shadow-sm">
       <div className="text-xl font-semibold">
-        {proExpForm.editMode ? 'Edit' : 'Create'}{' '}
-        {proExpForm.content === 'proExp'
+        {contentForm.editMode ? 'Edit' : 'Create'}{' '}
+        {contentForm.content === 'proExp'
           ? 'Professional Experience'
           : 'Education'}
       </div>
@@ -56,10 +56,10 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
           htmlFor="job-title"
         >
-          {proExpForm.content === 'proExp' ? 'Job title' : 'Degree'}
+          {contentForm.content === 'proExp' ? 'Job title' : 'Degree'}
         </label>
         <input
-          name={proExpForm.content === 'proExp' ? 'jobTitle' : 'degree'}
+          name={contentForm.content === 'proExp' ? 'jobTitle' : 'degree'}
           className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="job-title"
           type="text"
@@ -71,10 +71,10 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
           htmlFor="employer"
         >
-          {proExpForm.content === 'proExp' ? 'Employer' : 'School'}
+          {contentForm.content === 'proExp' ? 'Employer' : 'School'}
         </label>
         <input
-          name={proExpForm.content === 'proExp' ? 'employer' : 'school'}
+          name={contentForm.content === 'proExp' ? 'employer' : 'school'}
           className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="employer"
           type="text"
@@ -169,4 +169,4 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
   );
 }
 
-export default ProExpForm;
+export default ContentForm;
