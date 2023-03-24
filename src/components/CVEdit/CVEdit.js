@@ -11,7 +11,10 @@ import { PlusIcon } from '@heroicons/react/24/outline';
 function CVEdit({ user, setUser, avatar, setAvatar }) {
   const [mainPage, setMainPage] = useState(user.name ? true : false);
   const [persoInfoForm, setPersoInfoForm] = useState(false);
-  const [proExpForm, setProExpForm] = useState(false);
+  const [proExpForm, setProExpForm] = useState({
+    show: false,
+    content: 'proExp',
+  });
 
   return (
     <div className="flex flex-col gap-6">

@@ -46,19 +46,20 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
   return (
     <div className="cursor-pointer rounded-2xl bg-white py-6 px-9 shadow-sm">
       <div className="text-xl font-semibold">
-        {proExpForm.editMode
-          ? 'Edit Professional Experience'
-          : 'Create Professional Experience'}
+        {proExpForm.editMode ? 'Edit' : 'Create'}{' '}
+        {proExpForm.content === 'proExp'
+          ? 'Professional Experience'
+          : 'Education'}
       </div>
       <form onSubmit={handleSubmit}>
         <label
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
           htmlFor="job-title"
         >
-          Job title
+          {proExpForm.content === 'proExp' ? 'Job title' : 'Degree'}
         </label>
         <input
-          name="jobTitle"
+          name={proExpForm.content === 'proExp' ? 'jobTitle' : 'degree'}
           className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="job-title"
           type="text"
@@ -70,10 +71,10 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
           className="mb-2 mt-6 block text-sm font-bold text-gray-700"
           htmlFor="employer"
         >
-          Employer
+          {proExpForm.content === 'proExp' ? 'Employer' : 'School'}
         </label>
         <input
-          name="employer"
+          name={proExpForm.content === 'proExp' ? 'employer' : 'school'}
           className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="employer"
           type="text"

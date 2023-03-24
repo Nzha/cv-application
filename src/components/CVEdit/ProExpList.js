@@ -26,7 +26,12 @@ function ProExpList({ user, setUser, setProExpForm }) {
 
 function ProExp({ proExp, user, setUser, setProExpForm }) {
   function handleEdit(id) {
-    setProExpForm({ show: true, editMode: true, editId: id });
+    setProExpForm({
+      show: true,
+      content: 'proExp',
+      editMode: true,
+      editId: id,
+    });
   }
 
   function handleDelete(id) {
