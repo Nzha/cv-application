@@ -49,7 +49,12 @@ function Modal({ showModal, setShowModal, setProExpForm }) {
                     A place to highlight your professional experience
                   </p>
                 </div>
-                <div className="cursor-pointer rounded-lg bg-gray-100 px-4 py-5 transition-all hover:scale-[1.02] hover:opacity-90">
+                <div
+                  className="cursor-pointer rounded-lg bg-gray-100 px-4 py-5 transition-all hover:scale-[1.02] hover:opacity-90"
+                  onClick={() => {
+                    setProExpForm(true);
+                  }}
+                >
                   <div className="flex gap-2">
                     <div className="font-semibold">Education</div>
                   </div>

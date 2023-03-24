@@ -46,7 +46,9 @@ function ProExpForm({ user, setUser, proExpForm, setProExpForm }) {
   return (
     <div className="cursor-pointer rounded-2xl bg-white py-6 px-9 shadow-sm">
       <div className="text-xl font-semibold">
-        Create Professional Experience
+        {proExpForm.editMode
+          ? 'Edit Professional Experience'
+          : 'Create Professional Experience'}
       </div>
       <form onSubmit={handleSubmit}>
         <label
