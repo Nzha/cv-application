@@ -4,36 +4,44 @@ import CancelSaveBtns from './CancelSaveBtns';
 
 function ContentForm({ user, setUser, contentForm, setContentForm }) {
   const [initialUser] = useState(user);
-  const [proExp, setProExp] = useState(
+  const [input, setInput] = useState(
     contentForm.editMode
       ? user.proExp.find((a) => a.id === contentForm.editId)
       : []
   );
 
   function handleChange(e) {
-    const newProExp = [...user.proExp];
+    let content = contentForm.content === 'proExp' ? user.proExp : user.eduExp;
+    let contentType = contentForm.content === 'proExp' ? 'proExp' : 'eduExp';
+    const newContent = [...content];
+
     if (contentForm.editMode) {
-      const index = newProExp.findIndex((a) => a.id === contentForm.editId);
-      newProExp[index] = {
-        ...newProExp[index],
+      const index = newContent.findIndex((a) => a.id === contentForm.editId);
+      newContent[index] = {
+        ...newContent[index],
         [e.target.name]: e.target.value,
       };
-      setUser({ ...user, proExp: newProExp });
+      setUser({ ...user, [contentType]: newContent });
     } else {
-      const index = initialUser.proExp.length;
-      newProExp[index] = {
+      let initialContent =
+        contentForm.content === 'proExp'
+          ? initialUser.proExp
+          : initialUser.eduExp;
+      const index = initialContent.length;
+      newContent[index] = {
         id: uuidv4(),
-        ...newProExp[index],
+        ...newContent[index],
         [e.target.name]: e.target.value,
       };
-      setUser({ ...user, proExp: newProExp });
+
+      setUser({ ...user, [contentType]: newContent });
     }
-    setProExp({ ...proExp, [e.target.name]: e.target.value });
+    setInput({ ...input, [e.target.name]: e.target.value });
   }
 
   function handleCancel(e) {
     e.preventDefault();
-    setProExp([]);
+    setInput([]);
     setUser(initialUser);
     setContentForm(false);
   }
@@ -63,7 +71,11 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
           className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="job-title"
           type="text"
-          value={proExp.jobTitle || ''}
+          value={
+            (contentForm.content === 'proExp'
+              ? input.jobTitle
+              : input.degree) || ''
+          }
           onChange={handleChange}
           required
         />
@@ -78,7 +90,11 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
           className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="employer"
           type="text"
-          value={proExp.employer || ''}
+          value={
+            (contentForm.content === 'proExp'
+              ? input.employer
+              : input.school) || ''
+          }
           onChange={handleChange}
         />
         <div className="flex w-full gap-5">
@@ -94,7 +110,7 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
               className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
               id="city"
               type="text"
-              value={proExp.city || ''}
+              value={input.city || ''}
               onChange={handleChange}
             />
           </div>
@@ -110,7 +126,7 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
               className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
               id="country"
               type="text"
-              value={proExp.country || ''}
+              value={input.country || ''}
               onChange={handleChange}
             />
           </div>
@@ -128,7 +144,7 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
               className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
               id="startDate"
               type="text"
-              value={proExp.startDate || ''}
+              value={input.startDate || ''}
               onChange={handleChange}
             />
           </div>
@@ -144,7 +160,7 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
               className="block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
               id="endDate"
               type="text"
-              value={proExp.endDate || ''}
+              value={input.endDate || ''}
               onChange={handleChange}
             />
           </div>
@@ -160,7 +176,7 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
           className="mb-8 block w-full appearance-none rounded-xl bg-gray-100 py-3 px-4 leading-tight focus:outline-none"
           id="description"
           rows="7"
-          value={proExp.description || ''}
+          value={input.description || ''}
           onChange={handleChange}
         />
         <CancelSaveBtns handleCancel={handleCancel} />
