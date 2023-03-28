@@ -3,16 +3,17 @@ import { v4 as uuidv4 } from 'uuid';
 import CancelSaveBtns from './CancelSaveBtns';
 
 function ContentForm({ user, setUser, contentForm, setContentForm }) {
+  let contentArr = contentForm.content === 'proExp' ? user.proExp : user.eduExp;
+  let contentType = contentForm.content === 'proExp' ? 'proExp' : 'eduExp';
+
   const [initialUser] = useState(user);
   const [input, setInput] = useState(
     contentForm.editMode
-      ? user.proExp.find((a) => a.id === contentForm.editId)
+      ? contentArr.find((a) => a.id === contentForm.editId)
       : []
   );
 
   function handleChange(e) {
-    let contentArr = contentForm.content === 'proExp' ? user.proExp : user.eduExp;
-    let contentType = contentForm.content === 'proExp' ? 'proExp' : 'eduExp';
     const newContent = [...contentArr];
 
     if (contentForm.editMode) {

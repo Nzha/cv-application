@@ -56,11 +56,10 @@ function Exp({ exp, user, setUser, setContentForm, content }) {
   let title = exp.jobTitle ? exp.jobTitle : exp.degree;
   let place = exp.employer ? exp.employer : exp.school;
 
-  // TODO : Edit doesn't work for educational experiences yet
   function handleEdit(id) {
     setContentForm({
       show: true,
-      content: 'proExp',
+      content: content === 'proExp' ? 'proExp' : 'eduExp',
       editMode: true,
       editId: id,
     });
