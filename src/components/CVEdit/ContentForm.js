@@ -11,9 +11,9 @@ function ContentForm({ user, setUser, contentForm, setContentForm }) {
   );
 
   function handleChange(e) {
-    let content = contentForm.content === 'proExp' ? user.proExp : user.eduExp;
+    let contentArr = contentForm.content === 'proExp' ? user.proExp : user.eduExp;
     let contentType = contentForm.content === 'proExp' ? 'proExp' : 'eduExp';
-    const newContent = [...content];
+    const newContent = [...contentArr];
 
     if (contentForm.editMode) {
       const index = newContent.findIndex((a) => a.id === contentForm.editId);
