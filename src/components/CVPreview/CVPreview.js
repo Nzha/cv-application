@@ -1,4 +1,4 @@
-import PersonalInfo from './PersonalInfo';
+import UserPersonalInfo from './UserPersonalInfo';
 import UserContentCategories from './UserContentCategories';
 
 function CVPreview({ user, avatar }) {
@@ -7,7 +7,7 @@ function CVPreview({ user, avatar }) {
       className="hidden min-h-full bg-white py-14 px-14 shadow-sm lg:block"
       id="pdf"
     >
-      <PersonalInfo user={user} avatar={avatar} />
+      <UserPersonalInfo user={user} avatar={avatar} />
       <UserContentCategories user={user} />
     </div>
   );

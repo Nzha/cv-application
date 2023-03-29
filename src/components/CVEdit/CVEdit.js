@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import CVTitle from './CVTitle';
 import FullNameForm from './FullNameForm';
-import PersonalInfo from './PersonalInfo';
+import UserPersonalInfo from './UserPersonalInfo';
 import PersonalInfoForm from './PersonalInfoForm';
 import Modal from './Modal';
 import ContentForm from './ContentForm';
-import ContentList from './ContentList';
+import UserContentCategories from './UserContentCategories';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 function CVEdit({ user, setUser, avatar, setAvatar }) {
@@ -22,14 +22,14 @@ function CVEdit({ user, setUser, avatar, setAvatar }) {
         <>
           {!persoInfoForm && !contentForm ? (
             <>
-              <PersonalInfo
+              <UserPersonalInfo
                 user={user}
                 avatar={avatar}
                 setAvatar={setAvatar}
                 setPersoInfoForm={setPersoInfoForm}
               />
               {user.proExp.length > 0 && (
-                <ContentList
+                <UserContentCategories
                   user={user}
                   setUser={setUser}
                   setContentForm={setContentForm}

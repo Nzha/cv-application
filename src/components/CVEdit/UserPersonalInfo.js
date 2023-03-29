@@ -5,7 +5,7 @@ import {
   MapPinIcon,
 } from '@heroicons/react/24/outline';
 
-function PersonalInfo({ user, avatar, setAvatar, setPersoInfoForm }) {
+function UserPersonalInfo({ user, avatar, setAvatar, setPersoInfoForm }) {
   return (
     <div className="flex items-center justify-between rounded-2xl bg-white px-9 py-6 shadow-sm">
       <div className="cursor-pointer" onClick={() => setPersoInfoForm(true)}>
@@ -93,4 +93,4 @@ function Avatar({ avatar, setAvatar }) {
   );
 }
 
-export default PersonalInfo;
+export default UserPersonalInfo;

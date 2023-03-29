@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import CancelSaveBtns from './CancelSaveBtns';
+import CancelSaveBtns from '../Utilities/CancelSaveBtns';
 
 function ContentForm({ user, setUser, contentForm, setContentForm }) {
   let contentArr = contentForm.content === 'proExp' ? user.proExp : user.eduExp;

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import CancelSaveBtns from './CancelSaveBtns';
+import CancelSaveBtns from '../Utilities/CancelSaveBtns';
 
 function PersonalInfoForm({ user, setUser, setPersoInfoForm }) {
   const [initialUser] = useState(user);

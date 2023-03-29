@@ -1,56 +1,45 @@
+import Card from '../Utilities/Card';
 import {
   BriefcaseIcon,
   AcademicCapIcon,
   TrashIcon,
 } from '@heroicons/react/24/outline';
 
-function ContentList({ user, setUser, setContentForm }) {
+function UserContentCategories({ user, setUser, setContentForm }) {
   return (
     <div className="flex flex-col gap-6">
-      <ExpCard
+      <Card
         title="Professional Experience"
         icon={<BriefcaseIcon className="h-7 w-7 stroke-2" />}
       >
-        <ExpList
+        <UserContentCategory
           user={user}
           setUser={setUser}
           setContentForm={setContentForm}
           content="proExp"
         />
-      </ExpCard>
-      <ExpCard
+      </Card>
+      <Card
         title="Education"
         icon={<AcademicCapIcon className="h-7 w-7 stroke-2" />}
       >
-        <ExpList
+        <UserContentCategory
           user={user}
           setUser={setUser}
           setContentForm={setContentForm}
           content="eduExp"
         />
-      </ExpCard>
+      </Card>
     </div>
   );
 }
 
-function ExpCard({ children, icon, title }) {
-  return (
-    <div className="rounded-2xl bg-white px-9 pt-6 pb-4 shadow-sm">
-      <div className="mb-3 flex items-center gap-5">
-        {icon}
-        <div className="text-xl font-semibold">{title}</div>
-      </div>
-      <ul className="list-none divide-y divide-gray-200">{children}</ul>
-    </div>
-  );
-}
-
-function ExpList({ user, setUser, setContentForm, content }) {
+function UserContentCategory({ user, setUser, setContentForm, content }) {
   let contentType = content === 'proExp' ? user.proExp : user.eduExp;
 
   return contentType.map((exp) => {
     return (
-      <Exp
+      <UserContentExperience
         key={exp.id}
         exp={exp}
         user={user}
@@ -62,7 +51,13 @@ function ExpList({ user, setUser, setContentForm, content }) {
   });
 }
 
-function Exp({ exp, user, setUser, setContentForm, content }) {
+function UserContentExperience({
+  exp,
+  user,
+  setUser,
+  setContentForm,
+  content,
+}) {
   let title = exp.jobTitle ? exp.jobTitle : exp.degree;
   let place = exp.employer ? exp.employer : exp.school;
 
@@ -107,4 +102,4 @@ function Exp({ exp, user, setUser, setContentForm, content }) {
   );
 }
 
-export default ContentList;
+export default UserContentCategories;
