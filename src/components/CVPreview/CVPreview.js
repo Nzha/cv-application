@@ -1,5 +1,5 @@
 import PersonalInfo from './PersonalInfo';
-import ProExpList from './ProExpList';
+import UserContentCategories from './UserContentCategories';
 
 function CVPreview({ user, avatar }) {
   return (
@@ -8,7 +8,7 @@ function CVPreview({ user, avatar }) {
       id="pdf"
     >
       <PersonalInfo user={user} avatar={avatar} />
-      <ProExpList user={user} />
+      <UserContentCategories user={user} />
     </div>
   );
 }
