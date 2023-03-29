@@ -1,9 +1,16 @@
-import { BriefcaseIcon, TrashIcon } from '@heroicons/react/24/outline';
+import {
+  BriefcaseIcon,
+  AcademicCapIcon,
+  TrashIcon,
+} from '@heroicons/react/24/outline';
 
 function ContentList({ user, setUser, setContentForm }) {
   return (
     <div className="flex flex-col gap-6">
-      <ExpCard>
+      <ExpCard
+        title="Professional Experience"
+        icon={<BriefcaseIcon className="h-7 w-7 stroke-2" />}
+      >
         <ExpList
           user={user}
           setUser={setUser}
@@ -11,7 +18,10 @@ function ContentList({ user, setUser, setContentForm }) {
           content="proExp"
         />
       </ExpCard>
-      <ExpCard>
+      <ExpCard
+        title="Education"
+        icon={<AcademicCapIcon className="h-7 w-7 stroke-2" />}
+      >
         <ExpList
           user={user}
           setUser={setUser}
@@ -23,12 +33,12 @@ function ContentList({ user, setUser, setContentForm }) {
   );
 }
 
-function ExpCard({ children }) {
+function ExpCard({ children, icon, title }) {
   return (
     <div className="rounded-2xl bg-white px-9 pt-6 pb-4 shadow-sm">
       <div className="mb-3 flex items-center gap-5">
-        <BriefcaseIcon className="h-7 w-7 stroke-2" />
-        <div className="text-xl font-semibold">Professional Experience</div>
+        {icon}
+        <div className="text-xl font-semibold">{title}</div>
       </div>
       <ul className="list-none divide-y divide-gray-200">{children}</ul>
     </div>
