@@ -1,11 +1,11 @@
 import { useState, useRef, useEffect } from 'react';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 import {
   PencilSquareIcon,
   DocumentArrowDownIcon,
   CheckIcon,
 } from '@heroicons/react/24/outline';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 
 function CVTitle({ user, setUser }) {
   const [editMode, setEditMode] = useState(false);
@@ -24,20 +24,16 @@ function CVTitle({ user, setUser }) {
     };
   }, [inputRef]);
 
-  // async function createPDF() {
-  //   const pdf = new jsPDF();
-  //   const data = await html2canvas(document.querySelector('#pdf'), {
-  //     scale: 1.5, // The greater the scale, the better the quality but also the size
-  //   });
-  //   const img = data.toDataURL('image/png');
-  //   const pdfWidth = pdf.internal.pageSize.getWidth();
-  //   const pdfHeight = pdf.internal.pageSize.getHeight();
-  //   pdf.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight);
-  //   pdf.save('resume.pdf');
-  // }
-
-  function createPDF() {
-    console.log(user)
+  async function createPDF() {
+    const pdf = new jsPDF();
+    const data = await html2canvas(document.querySelector('#pdf'), {
+      scale: 1.5, // The greater the scale, the better the quality but also the size
+    });
+    const img = data.toDataURL('image/png');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight();
+    pdf.addImage(img, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('resume.pdf');
   }
 
   return (

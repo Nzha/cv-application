@@ -40,8 +40,8 @@ function UserContentExperience({ exp }) {
   let place = exp.employer ? exp.employer : exp.school;
 
   return (
-    <div className="flex items-start justify-between">
-      <div>
+    <div className="flex items-start justify-between gap-4">
+      <div className="flex-1">
         <span className="font-semibold">{title}</span>
         {place && ', '}
         <span className="italic">{place}</span>

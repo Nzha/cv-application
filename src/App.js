@@ -24,7 +24,7 @@ function App() {
   };
 
   return (
-    <main className="grid min-h-screen gap-12 bg-slate-100 px-6 lg:grid-cols-2 lg:px-8 lg:pt-8 2xl:px-36">
+    <main className="grid min-h-screen gap-12 bg-slate-100 px-6 lg:grid-cols-2 lg:px-8 lg:pt-8 min-[1670px]:px-36">
       <CVEdit {...childProps} />
       <CVPreview {...childProps} />
     </main>

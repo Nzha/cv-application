@@ -6,7 +6,7 @@ import {
 
 function UserPersonalInfo({ user, avatar }) {
   return (
-    <div className="flex flex-col items-center gap-2">
+    <div className="flex flex-col items-center gap-1">
       {avatar && (
         <img
           src={avatar}
@@ -16,21 +16,21 @@ function UserPersonalInfo({ user, avatar }) {
       )}
       <div className="text-2xl font-semibold">{user.name}</div>
       {user.jobTitle && <div className="text-xl">{user.jobTitle}</div>}
-      <div className="flex justify-center gap-4 text-sm">
+      <div className="flex gap-4 pt-1 text-xs">
         {user.email && (
-          <div className="flex gap-1">
+          <div className="flex items-center gap-1">
             <EnvelopeIcon className="h-5 w-5" />
             {user.email}
           </div>
         )}
         {user.phone && (
-          <div className="flex gap-1">
+          <div className="flex items-center gap-1">
             <PhoneIcon className="h-5 w-5" />
             {user.phone}
           </div>
         )}
         {user.address && (
-          <div className="flex gap-1">
+          <div className="flex items-center gap-1">
             <MapPinIcon className="h-5 w-5" />
             {user.address}
           </div>
