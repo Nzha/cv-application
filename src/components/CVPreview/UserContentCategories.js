@@ -22,10 +22,8 @@ function UserContentCategories({ user }) {
 function UserContentCategory({ category, categoryContent }) {
   return (
     <div>
-      <div className="pt-4 pb-2 font-semibold">
-        {category}
-        <hr className="border border-black" />
-      </div>
+      <div className="mb divide-y pt-4 font-semibold">{category}</div>
+      <hr className="my-1 border border-black" />
       <div className="flex flex-col gap-2 text-sm">
         {categoryContent.map((exp) => {
           return <UserContentExperience key={exp.id} exp={exp} />;
