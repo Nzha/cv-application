@@ -16,17 +16,17 @@ function Avatar({ avatar, setAvatar }) {
           alt="Avatar"
         />
       ) : (
-        <div class="relative h-32 w-32 overflow-hidden rounded-full bg-gray-100 shadow-lg dark:bg-gray-600">
+        <div className="relative h-32 w-32 overflow-hidden rounded-full bg-gray-100 shadow-lg dark:bg-gray-600">
           <svg
-            class="absolute -left-4 h-40 w-40 text-gray-400"
+            className="absolute -left-4 h-40 w-40 text-gray-400"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              fill-rule="evenodd"
+              fillRule="evenodd"
               d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-              clip-rule="evenodd"
+              clipRule="evenodd"
             ></path>
           </svg>
         </div>
